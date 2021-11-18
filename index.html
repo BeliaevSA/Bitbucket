@@ -5,8 +5,36 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;700&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-  
+  <div class="adding-product">
+    <h2>Добавление товара</h2>
+    <form class="adding-form" action="">
+      <label for="productName"><p>Наименование товара</p></label>
+      <input type="text" name="" id="productName" autocomplete="off" placeholder="Введите наименование товара" required>
+      <label for="productName"><p class="adding-form__textarea">Описание товара товара</p></label>
+      <textarea name="" id="productInfo" autocomplete="off" placeholder="Введите описание товара"></textarea>
+      <label for="productName"><p>Ссылка на изображение товара</p></label>
+      <input type="text" name="" id="productImg" autocomplete="off" placeholder="Введите ссылку"required>
+      <label for="productName"><p>Цена товара</p></label>
+      <input type="text" name="" id="productPrice" autocomplete="off" placeholder="Введите цену" required>
+      <input type="submit" value="Добавить товар">
+    </form>
+  </div>
+  <div class="product-container">
+    <button>По умолчанию</button>
+    <div class="product-all">
+      <div class="product-item">
+        <div class="product-item__img"></div>
+        <h3>Наименование товара</h3>
+        <p class="product-item__info">Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк</p>
+        <p class="product-item__price">10 000 руб.</p>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
