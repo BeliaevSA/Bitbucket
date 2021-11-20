@@ -63,8 +63,7 @@ body {
       padding: 10px 16px;
       outline: none;
     }
-    input[type="text"]._active,
-    textarea._active{
+    input[type="text"]._active{
       border: 1px solid #FF8484;
     }
     input[type="text"]{
@@ -75,15 +74,22 @@ body {
       resize: none;
       margin-bottom: 10px;
     }
-    input[type="submit"]{
+    input[type="button"]{
       width: 100%;
       height: 36px;
       background: #EEEEEE;
+      color: #B4B4B4;
       border-radius: 10px;
       margin-top: 24px;
       border: none;
+      &._active{
+        background: #7BAE73;
+        color: #FFFFFF;
+        cursor: pointer;
+      }
     }
     .required-entry{
+      display: block;
       font-size: 8px;
       line-height: 10px;
       letter-spacing: -0.02em;
@@ -92,14 +98,12 @@ body {
       margin-bottom: -6px;
       opacity: 0;
     }
-    .required-entry._active{
-      opacity: 1;
-    }
   }
 }
 .product-container{
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   .product-btn{
     display: flex;
     justify-content: flex-end;
@@ -139,7 +143,7 @@ body {
     justify-content: center;
     .product-item{
       width: 332px;
-      min-height: 423px;
+      // min-height: 423px;
       background: #FFFEFB;
       box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
       border-radius: 4px;
@@ -173,8 +177,20 @@ body {
       &:hover{
         cursor: pointer;
       }
-      &::before{
-        content: url(/images/delete.svg);
+      // &::before{
+      //   content: url(/images/delete.svg);
+      //   padding: 8px;
+      //   width: 32px;
+      //   height: 32px;
+      //   background-color: #FF8484;
+      //   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      //   border-radius: 10px;
+      //   position: absolute;
+      //   top: -8px;
+      //   right: -8px;
+      //   display: none;
+      // }
+      .product-item__delete{
         padding: 8px;
         width: 32px;
         height: 32px;
@@ -186,8 +202,16 @@ body {
         right: -8px;
         display: none;
       }
-      &:hover::before{
-        display: block;}
+      .product-item__delete-img{
+        background-image: url(/images/delete.svg);
+        width: 16px;
+        height: 16px;
+      }
+      // &:hover::before{
+      //   display: block;}
+      &:hover .product-item__delete{
+        display: block;
+      } 
     } 
   }
 }
