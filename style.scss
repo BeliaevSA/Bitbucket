@@ -1,4 +1,6 @@
-*{
+*,
+::before,
+::after{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -6,38 +8,36 @@
 }
 
 body {
-  padding: 32px;
+  padding: 32px 32px 32px 32px;
   background: #fafaf7;
   display: flex;
-
+  flex-direction: row;
 }
-
 .adding-product{
-  width: 332px;
   h2{
     font-weight: 600;
     font-size: 28px;
     line-height: 35.2px;
     color: #3F3F3F;
-    
   }
   .adding-form{
+    position: sticky;
+    top: 16px;
     margin-top: 16px;
     width: 332px;
     background: #FFFEFB;
-    padding: 24px;
-    padding: 6px 24px 24px;
+    padding: 16px 24px 24px;
     box-shadow: 0px 20px 30px rgba(97, 47, 47, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
     border-radius: 4px;
     border: none;
-    p{
+    .adding-form__text{
       display: inline-block;
       font-size: 10px;
       line-height: 13px;
       letter-spacing: -0.02em;
       color: #49485E;
-      margin-top: 16px;
       position: relative;
+      margin-top: 2px;
       &::before{
         content: "";
         position: absolute;
@@ -48,8 +48,8 @@ body {
         background-color: #FF8484;
         border-radius: 181px;
       }
-    } 
-    .adding-form__textarea::before{
+    }
+    .adding-form__text-textarea::before{
         content: none;
       }
     input[type="text"],
@@ -61,6 +61,11 @@ body {
       border: none;
       margin-top: 4px;
       padding: 10px 16px;
+      outline: none;
+    }
+    input[type="text"]._active,
+    textarea._active{
+      border: 1px solid #FF8484;
     }
     input[type="text"]{
       height: 36px;
@@ -68,6 +73,7 @@ body {
     textarea{
       height: 108px;
       resize: none;
+      margin-bottom: 10px;
     }
     input[type="submit"]{
       width: 100%;
@@ -77,40 +83,192 @@ body {
       margin-top: 24px;
       border: none;
     }
+    .required-entry{
+      font-size: 8px;
+      line-height: 10px;
+      letter-spacing: -0.02em;
+      color: #FF8484;
+      margin-top: 4px;
+      margin-bottom: -6px;
+      opacity: 0;
+    }
+    .required-entry._active{
+      opacity: 1;
+    }
   }
 }
 .product-container{
-  button{
-    font-size: 12px;
-    line-height: 15px;
-    padding: 10px 27.5px 11px 16px;
-    color: #B4B4B4;
-    background: #FFFEFB;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-    border: none;
-    position: relative;
-    &::before{
-      content: "";
-      width: 4.5px;
-      height: 4.5px;
-      transform: rotate(45deg);
-      border-bottom: 1px solid #B4B4B4;
-      border-right: 1px solid #B4B4B4;
-      position: absolute;
-      right: 16px;
-      top: 14px;
+  display: flex;
+  flex-direction: column;
+  .product-btn{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 16px;
+    button{
+      width: 121.5px;
+      font-size: 12px;
+      line-height: 15px;
+      padding: 10px 27.5px 11px 16px;
+      color: #B4B4B4;
+      background: #FFFEFB;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      border: none;
+      position: relative;
+      right: 0;
+      &::before{
+        content: "";
+        width: 4.5px;
+        height: 4.5px;
+        transform: rotate(45deg);
+        border-bottom: 1px solid #B4B4B4;
+        border-right: 1px solid #B4B4B4;
+        position: absolute;
+        right: 16px;
+        top: 14px;
+      }
+      &:hover{
+        cursor: pointer;
+      }
     }
   }
   .product-all{
-    width: 332px;
-    height: 423px;
-    background: #FFFEFB;
-    box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
-    border-radius: 4px;
-    .product-item__img{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    .product-item{
+      width: 332px;
+      min-height: 423px;
+      background: #FFFEFB;
+      box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
+      border-radius: 4px;
+      margin: 16px;
+      position: relative;
+      .product-item__img{
+        background-image: url(/images/product.png);
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+        height: 200px;
+      }
+      h3{
+        margin: 16px 0 0 16px;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 25.14px;
+        color: #3F3F3F;
+      }
+      .product-item__info{
+        margin: 16px;
+        font-size: 16px;
+        line-height: 20.11px;
+      }
+      .product-item__price{
+        margin: 32px 0 24px 16px;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 30.17px;
+      }
+      &:hover{
+        cursor: pointer;
+      }
+      &::before{
+        content: url(/images/delete.svg);
+        padding: 8px;
+        width: 32px;
+        height: 32px;
+        background-color: #FF8484;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        display: none;
+      }
+      &:hover::before{
+        display: block;}
+    } 
+  }
+}
+@media screen and (max-width: 760px) {
+  body {
+    flex-direction: column;
+  }
+  .adding-product{
+    h2{
+      text-align: center;
+    }
+    .adding-form{
+      top: 16px;
+      margin: 16px 0;
       width: 100%;
-      height: 200px;
+      padding: 16px 24px 24px;
+      .adding-form__text{
+        display: inline-block;
+        font-size: 10px;
+        line-height: 13px;
+        letter-spacing: -0.02em;
+        color: #49485E;
+        position: relative;
+        margin-top: 2px;
+        &::before{
+          content: "";
+          position: absolute;
+          top: 0px;
+          right: -4px;
+          width: 4px;
+          height: 4px;
+          background-color: #FF8484;
+          border-radius: 181px;
+        }
+      }
+      .adding-form__text-textarea::before{
+          content: none;
+        }
+      input[type="text"],
+      textarea{
+        width: 100%;
+        background: #FFFEFB;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        border: none;
+        margin-top: 4px;
+        padding: 10px 16px;
+        outline: none;
+      }
+      input[type="text"]._active,
+      textarea._active{
+        border: 1px solid #FF8484;
+      }
+      input[type="text"]{
+        height: 36px;
+      }
+      textarea{
+        height: 108px;
+        resize: none;
+        margin-bottom: 10px;
+      }
+      input[type="submit"]{
+        width: 100%;
+        height: 36px;
+        background: #EEEEEE;
+        border-radius: 10px;
+        margin-top: 24px;
+        border: none;
+      }
+      .required-entry{
+        font-size: 8px;
+        line-height: 10px;
+        letter-spacing: -0.02em;
+        color: #FF8484;
+        margin-top: 4px;
+        margin-bottom: -6px;
+        opacity: 0;
+      }
+      .required-entry._active{
+        opacity: 1;
+      }
     }
   }
 }
